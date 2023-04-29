@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.suspectBank{
+.suspect_bank{
     display: flex;
     flex-direction: row;
     border-style: solid;
@@ -18,13 +18,23 @@
     border-color: #9F73AB;
 }
 
-.depositBank{
+.suspect_bank_item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.deposit_bank{
     display: flex;
     flex-direction: row;
     border-style: solid;
     border-width: 2px;
     border-radius: 3px;
     border-color: #9F73AB;
+    min-width: 100px;
+    min-height: 40px;
+    padding: 10px;
+    gap: 40px;
 }
 
 .group{
@@ -36,8 +46,32 @@
     border-color: #9F73AB;
 }
 
-.susImage{
+.sus_image{
     border-radius: 50%;
     width: 200px;
     height: 200px;
+}
+
+.warmup_screen_instructions_modal {
+    background-color: rgba(0, 0, 0, .75) !important;
+    border: 1px solid white;
+    border-radius: 1em;
+    color: white;
+    width: 50vw !important;
+    min-width: 50vw !important;
+    max-width: fit-content;
+}
+
+.warmup_screen_instructions_header {
+    border: none !important;
+    font-size: 1.3em;
+}
+
+.warmup_screen_instructions_footer {
+    border: none !important;
+}
+
+.warmup_screen_instructions_body {
+    border: none !important;
+    font-size: 1.15em;
 }

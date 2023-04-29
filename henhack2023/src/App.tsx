@@ -24,6 +24,7 @@ function App(): JSX.Element {
     game: true,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const changeDisplay = React.useCallback(
     (key: keyof ScreenDisplay) => {
       const newDisplayScreen: ScreenDisplay = { ...displayScreen };
@@ -60,17 +61,7 @@ function App(): JSX.Element {
           crossOrigin="anonymous"
         />
       </head>
-<<<<<<< HEAD
-      {displayScreen.home ? <WarmupScreen /> : null}
-=======
-      {displayScreen.home ? (
-        <HomeScreen
-          toggleShowGame={() => {
-            changeDisplay("game");
-          }}
-        />
-      ) : null}
->>>>>>> 81edd4eaaeaf98d0ffcacc4d1b846639897aa35c
+      <WarmupScreen></WarmupScreen>
     </>
     </DndProvider>
   );
