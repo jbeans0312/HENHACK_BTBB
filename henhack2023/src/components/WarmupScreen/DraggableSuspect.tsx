@@ -11,10 +11,12 @@ export function DraggableSuspect({ id }: { id: string }): JSX.Element {
     }),
   })
   return (
-    <div ref={dragRef}>
-        <img className='susImage' src={require('../../suspect_images/suspect_' + id + '.png')}>
-        </img>
-        {isDragging}
+    <div className="suspect_bank_item">
+        <div ref={dragRef}>
+            <img className='sus_image' src={require('../../suspect_images/suspect_' + id + '.png')}></img>
+            {isDragging}
+        </div>
+        <p>Suspect {id}</p>
     </div>
   )
 }
