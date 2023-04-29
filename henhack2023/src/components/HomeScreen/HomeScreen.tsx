@@ -3,7 +3,13 @@ import { Button, Modal } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "src/styles/HomeScreen.module.css";
 
-export const HomeScreen = (): JSX.Element => {
+type HomeScreenProperties = {
+  toggleShowGame: () => void;
+};
+
+export const HomeScreen = ({
+  toggleShowGame,
+}: HomeScreenProperties): JSX.Element => {
   const [showInstructions, setShowInstructions] =
     React.useState<boolean>(false);
 

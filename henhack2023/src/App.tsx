@@ -7,7 +7,7 @@ import { HomeScreen } from "./components";
 type ScreenDisplay = {
   home: boolean;
   game: boolean;
-};
+} & Record<string, boolean>;
 
 function App(): JSX.Element {
   /**
@@ -18,6 +18,21 @@ function App(): JSX.Element {
     home: true,
     game: true,
   });
+
+  const changeDisplay = React.useCallback(
+    (key: keyof ScreenDisplay) => {
+      const newDisplayScreen: ScreenDisplay = { ...displayScreen };
+      Object.keys(newDisplayScreen).forEach((eachDisplayKey: string) => {
+        if (eachDisplayKey === key) {
+          newDisplayScreen[eachDisplayKey] = true;
+        } else {
+          newDisplayScreen[eachDisplayKey] = false;
+        }
+      });
+      setDisplayScreen(newDisplayScreen);
+    },
+    [displayScreen]
+  );
 
   return (
     <>
@@ -39,7 +54,13 @@ function App(): JSX.Element {
           crossOrigin="anonymous"
         />
       </head>
-      {displayScreen.home ? <HomeScreen /> : null}
+      {displayScreen.home ? (
+        <HomeScreen
+          toggleShowGame={() => {
+            changeDisplay("game");
+          }}
+        />
+      ) : null}
     </>
   );
 }
