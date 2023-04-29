@@ -1,0 +1,17 @@
+.susCardContainer{
+    background-color: #624F82;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 3px;
+    border-color: #9F73AB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.susImage{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
