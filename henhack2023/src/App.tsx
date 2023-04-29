@@ -7,6 +7,7 @@ import { HomeScreen } from "./components";
 type ScreenDisplay = {
   home: boolean;
   game: boolean;
+  warmup: boolean;
 } & Record<string, boolean>;
 
 function App(): JSX.Element {
@@ -16,7 +17,8 @@ function App(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [displayScreen, setDisplayScreen] = React.useState<ScreenDisplay>({
     home: true,
-    game: true,
+    game: false,
+    warmup: false,
   });
 
   const changeDisplay = React.useCallback(
@@ -61,6 +63,8 @@ function App(): JSX.Element {
           }}
         />
       ) : null}
+      {displayScreen.warmup ? <div /> : null}
+      {displayScreen.game ? <div /> : null}
     </>
   );
 }
