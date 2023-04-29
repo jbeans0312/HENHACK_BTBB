@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
+import { DraggableSuspect } from './DraggableSuspect';
 
 export function DepositBank(): JSX.Element {
   const [bank, setBank] = useState(Array<string>())
@@ -15,7 +16,7 @@ export function DepositBank(): JSX.Element {
     <div ref={dropRef} className='deposit_bank'>
         {bank.map((id: string) => (
             <div key={id}>
-                <img className='sus_image' src={require('../../suspect_images/suspect_' + id + '.png')}></img>
+                <DraggableSuspect id={id}></DraggableSuspect>
             </div>
         ))}
         {isOver}

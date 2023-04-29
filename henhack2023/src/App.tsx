@@ -48,26 +48,7 @@ function App(): JSX.Element {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <>
-        {displayScreen.home ? (
-          <HomeScreen
-            toggleShowGame={() => {
-              changeDisplay("warmup");
-            }}
-          />
-        ) : null}
-        {displayScreen.warmup ? (
-          <>
-            {IMAGES.map((eachSuspectName: string, index: number) => (
-              <SuspectCard
-                key={`suspect_${index}_${eachSuspectName}`}
-                id={eachSuspectName}
-              />
-            ))}
-          </>
-        ) : null}
-        {displayScreen.game ? <div /> : null}
-      </>
+     <WarmupScreen></WarmupScreen>
     </DndProvider>
   );
 }

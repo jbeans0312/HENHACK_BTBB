@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
 import "../../styles/WarmupScreen.css"
+import { SuspectCard } from '../SuspectCard'
 
 export function DraggableSuspect({ id }: { id: string }): JSX.Element {
   const [{ isDragging }, dragRef] = useDrag({
@@ -13,7 +14,7 @@ export function DraggableSuspect({ id }: { id: string }): JSX.Element {
   return (
     <div className="suspect_bank_item">
         <div ref={dragRef}>
-            <img className='sus_image' src={require('../../suspect_images/suspect_' + id + '.png')}></img>
+            <SuspectCard id={id}></SuspectCard>
             {isDragging}
         </div>
         <p>Suspect {id}</p>
