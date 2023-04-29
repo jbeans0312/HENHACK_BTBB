@@ -5,6 +5,7 @@ import "./App.css";
 import { HomeScreen } from "./components";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
+import { GameScreen } from "./components/GameScreen/GameScreen";
 import { DndProvider } from "react-dnd";
 /**
  *
@@ -69,8 +70,8 @@ function App(): JSX.Element {
             }}
           />
         ) : null}
-        {displayScreen.warmup ? <div /> : null}
-        {displayScreen.game ? <div /> : null}
+        {displayScreen.warmup ? <WarmupScreen /> : null}
+        {displayScreen.game ? <GameScreen /> : null}
       </>
     </DndProvider>
   );
