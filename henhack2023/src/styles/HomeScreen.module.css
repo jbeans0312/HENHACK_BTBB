@@ -49,21 +49,32 @@
     text-align: center;
 }
 
+.home_screen_instructions_modal {
+    background-color: rgba(0, 0, 0, .75) !important;
+    border: 1px solid white;
+    border-radius: 1em;
+    color: white;
+    width: 50vw !important;
+    min-width: 50vw !important;
+    max-width: fit-content;
+}
+
 .home_screen_image {
     display: flex;
     justify-content: center;
     gap: 1em;
 }
 
-#grad {
-    background-image: linear-gradient(red, yellow);
-  }
+.home_screen_instructions_header {
+    border: none !important;
+    font-size: 1.3em;
+}
 
-  div.absolute {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    width: 200px;
-    height: 100px;
-    border: 3px solid #73AD21;
-  }
+.home_screen_instructions_footer {
+    border: none !important;
+}
+
+.home_screen_instructions_body {
+    border: none !important;
+    font-size: 1.15em;
+}

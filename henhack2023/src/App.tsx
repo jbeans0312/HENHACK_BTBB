@@ -1,13 +1,18 @@
 import React from "react";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import "./App.css";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { HomeScreen } from "./components";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
+import { DndProvider } from 'react-dnd';
 /**
  *
  */
 type ScreenDisplay = {
   home: boolean;
   game: boolean;
-};
+} & Record<string, boolean>;
 
 function App(): JSX.Element {
   /**
@@ -19,7 +24,23 @@ function App(): JSX.Element {
     game: true,
   });
 
+  const changeDisplay = React.useCallback(
+    (key: keyof ScreenDisplay) => {
+      const newDisplayScreen: ScreenDisplay = { ...displayScreen };
+      Object.keys(newDisplayScreen).forEach((eachDisplayKey: string) => {
+        if (eachDisplayKey === key) {
+          newDisplayScreen[eachDisplayKey] = true;
+        } else {
+          newDisplayScreen[eachDisplayKey] = false;
+        }
+      });
+      setDisplayScreen(newDisplayScreen);
+    },
+    [displayScreen]
+  );
+
   return (
+    <DndProvider backend={HTML5Backend}>
     <>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,9 +60,20 @@ function App(): JSX.Element {
           crossOrigin="anonymous"
         />
       </head>
-      {displayScreen.home ? <HomeScreen /> : null}
+<<<<<<< HEAD
+      {displayScreen.home ? <WarmupScreen /> : null}
+=======
+      {displayScreen.home ? (
+        <HomeScreen
+          toggleShowGame={() => {
+            changeDisplay("game");
+          }}
+        />
+      ) : null}
+>>>>>>> 81edd4eaaeaf98d0ffcacc4d1b846639897aa35c
     </>
+    </DndProvider>
   );
-}
+};
 
 export default App;
