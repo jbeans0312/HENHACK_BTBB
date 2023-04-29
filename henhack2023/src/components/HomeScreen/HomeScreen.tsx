@@ -3,9 +3,10 @@ import logo from "../../icon.png";
 import { Button, Modal, Image } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "src/styles/HomeScreen.module.css";
+import type { ScreenDisplay } from "src/App";
 
 type HomeScreenProperties = {
-  toggleShowGame: (key: string) => void;
+  toggleShowGame: (key: keyof ScreenDisplay) => void;
 };
 
 export const HomeScreen = ({

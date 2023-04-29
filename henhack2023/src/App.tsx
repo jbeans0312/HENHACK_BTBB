@@ -9,7 +9,7 @@ import { DndProvider } from "react-dnd";
 /**
  *
  */
-type ScreenDisplay = {
+export type ScreenDisplay = {
   home: boolean;
   game: boolean;
   warmup: boolean;
