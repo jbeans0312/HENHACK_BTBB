@@ -59,12 +59,6 @@
     max-width: fit-content;
 }
 
-.home_screen_image {
-    display: flex;
-    justify-content: center;
-    gap: 1em;
-}
-
 .home_screen_instructions_header {
     border: none !important;
     font-size: 1.3em;
@@ -77,4 +71,72 @@
 .home_screen_instructions_body {
     border: none !important;
     font-size: 1.15em;
+}
+
+@keyframes game_logo_left_anim {
+    from {
+        opacity: 0%;
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        opacity: 100%;
+    }
+}
+
+@keyframes game_logo_right_anim {
+    from {
+        opacity: 0%;
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+        opacity: 100%;
+    }
+}
+
+@keyframes game_logo_container_anim {
+    from {
+        gap: 80vw;
+    }
+    to {
+        gap: 3vw;
+    }
+}
+
+.home_screen_game_logo_left {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 1em;
+    animation: 1s ease-in game_logo_left_anim;
+    animation-fill-mode: forwards;
+}
+
+.home_screen_game_logo_right {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 1em;
+    animation: 1s ease-in game_logo_right_anim;
+    animation-fill-mode: forwards;
+}
+
+.home_screen_image {
+    display: flex;
+    position: relative;
+    height: 10vw;
+    justify-content: center;
+    animation: 1s ease-in-out game_logo_container_anim;
+    animation-fill-mode: forwards;
+}
+
+@media only screen and (min-width: 992px) {
+    .home_screen_game_logo_right {
+        width: 7vw;
+        height: 7vw;
+    }
+
+    .home_screen_game_logo_left {
+        width: 7vw;
+        height: 7vw;
+    }
 }
