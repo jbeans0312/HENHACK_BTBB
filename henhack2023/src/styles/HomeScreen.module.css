@@ -48,3 +48,22 @@
     color: rgba(128, 128, 128, .5);
     text-align: center;
 }
+
+.home_screen_image {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+#grad {
+    background-image: linear-gradient(red, yellow);
+  }
+
+  div.absolute {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+  }
