@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../icon.png";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Image } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "src/styles/HomeScreen.module.css";
 
@@ -24,16 +24,18 @@ export const HomeScreen = ({
         <div className={styles.home_screen_upper_content}>
           <div className={styles.home_screen_image}>
             {" "}
-            <img
-              style={{ width: 100, height: 100 }}
+            <Image
+              alt="First image for game"
+              className={styles.home_screen_game_logo_left}
+              rounded
               src={logo}
-              alt="Game Logo"
-            ></img>
-            <img
-              style={{ width: 100, height: 100 }}
+            />
+            <Image
+              className={styles.home_screen_game_logo_right}
+              rounded
               src={logo}
-              alt="Game Logo"
-            ></img>
+              alt="Second image for game"
+            />
           </div>
 
           <div className={styles.home_screen_title}>
@@ -64,7 +66,11 @@ export const HomeScreen = ({
         show={showInstructions}
         onHide={toggleShowInstructions}
       >
-        <Modal.Header className={styles.home_screen_instructions_header}>
+        <Modal.Header
+          className={styles.home_screen_instructions_header}
+          closeButton
+          closeVariant="white"
+        >
           {"Instructions"}
         </Modal.Header>
         <Modal.Body className={styles.home_screen_instructions_body}>
@@ -72,9 +78,6 @@ export const HomeScreen = ({
             "In this detective game, players must use clues about a suspect's face to determine if they robbed a bank. Using recursion, players will divide suspects into smaller groups based on facial characteristics until the perpetrator is identified."
           }
         </Modal.Body>
-        <Modal.Footer className={styles.home_screen_instructions_footer}>
-          {"Instructions footer"}
-        </Modal.Footer>
       </Modal>
     </>
   );
