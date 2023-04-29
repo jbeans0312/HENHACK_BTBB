@@ -37,10 +37,23 @@ export const HomeScreen = (): JSX.Element => {
         </div>
         <div className={styles.home_screen_footer}>{"Created by BTBB"}</div>
       </div>
-      <Modal show={showInstructions} onHide={toggleShowInstructions}>
-        <Modal.Header>{"Instructions"}</Modal.Header>
-        <Modal.Body>{"Instructions content"}</Modal.Body>
-        <Modal.Footer>{"Instructions footer"}</Modal.Footer>
+      <Modal
+        contentClassName={styles.home_screen_instructions_modal}
+        dialogClassName={styles.home_screen_instructions_modal}
+        show={showInstructions}
+        onHide={toggleShowInstructions}
+      >
+        <Modal.Header className={styles.home_screen_instructions_header}>
+          {"Instructions"}
+        </Modal.Header>
+        <Modal.Body className={styles.home_screen_instructions_body}>
+          {
+            "In this detective game, players must use clues about a suspect's face to determine if they robbed a bank. Using recursion, players will divide suspects into smaller groups based on facial characteristics until the perpetrator is identified."
+          }
+        </Modal.Body>
+        <Modal.Footer className={styles.home_screen_instructions_footer}>
+          {"Instructions footer"}
+        </Modal.Footer>
       </Modal>
     </>
   );
