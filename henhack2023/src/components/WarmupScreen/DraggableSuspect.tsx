@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
-import "../styles/WarmupScreen"
+import "../../styles/WarmupScreen.css"
 
 export function DraggableSuspect({ id }: { id: string }): JSX.Element {
   const [{ isDragging }, dragRef] = useDrag({
@@ -11,8 +11,10 @@ export function DraggableSuspect({ id }: { id: string }): JSX.Element {
     }),
   })
   return (
-    <img className='susImage' ref={dragRef} src={require('../suspect_images/suspect_' + id + '.png')}>
+    <div ref={dragRef}>
+        <img className='susImage' src={require('../../suspect_images/suspect_' + id + '.png')}>
+        </img>
         {isDragging}
-    </img>
+    </div>
   )
 }
