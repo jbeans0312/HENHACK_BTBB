@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDrag } from 'react-dnd';
+import React from 'react'
+import { useDrag } from 'react-dnd'
 import "../styles/WarmupScreen"
 
 export function DraggableSuspect({ id }: { id: string }): JSX.Element {

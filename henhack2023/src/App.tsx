@@ -1,6 +1,9 @@
 import React from "react";
+import { HTML5Backend } from "react-dnd-html5-backend";
 import "./App.css";
 import { HomeScreen } from "./components";
+import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
+import { DndProvider } from 'react-dnd';
 /**
  *
  */
@@ -20,11 +23,14 @@ function App(): JSX.Element {
   });
 
   return (
-    <div className="App">
+    <DndProvider backend={HTML5Backend}>
+       <div className="App">
       <header className="App-header"></header>
       {displayScreen.home ? <HomeScreen /> : null}
-    </div>
-  )
+        <WarmupScreen></WarmupScreen>
+      </div>
+    </DndProvider>
+  );
 };
 
 export default App
