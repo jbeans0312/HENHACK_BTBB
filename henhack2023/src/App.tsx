@@ -1,7 +1,6 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { HomeScreen} from "./components";
+import { HomeScreen } from "./components";
 /**
  *
  */
@@ -14,6 +13,7 @@ function App(): JSX.Element {
   /**
    * Controls the displaying of the screen
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [displayScreen, setDisplayScreen] = React.useState<ScreenDisplay>({
     home: true,
     game: true,
