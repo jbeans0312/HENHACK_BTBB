@@ -1,13 +1,13 @@
-import React from 'react'
-import '../styles/SuspectCard.css'
+import React from "react";
+import "../styles/SuspectCard.css";
+import { Suspect } from "./Suspect/Suspect";
 
-export function SuspectCard ({ id }: { id: string }): JSX.Element {
-  const suspectName = 'suspect_' + id + '.png'
-  console.log(suspectName)
+export function SuspectCard({ id }: { id: string }): JSX.Element {
+  const suspectName = "suspect_" + id + ".png";
 
   return (
-        <div className="susCardContainer">
-            <img className="susImage" src={require('../suspect_images/' + suspectName)}></img>
-        </div>
-  )
+    <div className="susCardContainer">
+      <Suspect imgPath={`../suspect_images/${suspectName}`} suspectName={id} />
+    </div>
+  );
 }

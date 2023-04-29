@@ -5,13 +5,14 @@ import "./App.css";
 import { HomeScreen } from "./components";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
-import { DndProvider } from 'react-dnd';
+import { DndProvider } from "react-dnd";
 /**
  *
  */
-type ScreenDisplay = {
+export type ScreenDisplay = {
   home: boolean;
   game: boolean;
+  warmup: boolean;
 } & Record<string, boolean>;
 
 function App(): JSX.Element {
@@ -21,7 +22,8 @@ function App(): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [displayScreen, setDisplayScreen] = React.useState<ScreenDisplay>({
     home: true,
-    game: true,
+    game: false,
+    warmup: false,
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,6 +44,7 @@ function App(): JSX.Element {
 
   return (
     <DndProvider backend={HTML5Backend}>
+<<<<<<< HEAD
     <>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -63,8 +66,39 @@ function App(): JSX.Element {
       </head>
       <WarmupScreen></WarmupScreen>
     </>
+=======
+      <>
+        <head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Righteous&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossOrigin="anonymous"
+          />
+        </head>
+        {displayScreen.home ? (
+          <HomeScreen
+            toggleShowGame={() => {
+              changeDisplay("game");
+            }}
+          />
+        ) : null}
+        {displayScreen.warmup ? <div /> : null}
+        {displayScreen.game ? <div /> : null}
+      </>
+>>>>>>> 9187b1e86eec9d06e7cf08397df880910071bef5
     </DndProvider>
   );
-};
+}
 
 export default App;
