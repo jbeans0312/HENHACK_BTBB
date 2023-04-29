@@ -1,0 +1,50 @@
+.home_screen {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2em;
+    padding: 2em;
+}
+
+.home_screen_content {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.home_screen_title {
+    color: white;
+    align-self: center;
+    font-weight: 600;
+    font-size: 2em;
+    text-align: center;
+    width: 100%;
+}
+
+.home_screen_description {
+    color: rgba(128, 128, 128, .75);
+    font-size: 1em;
+    text-align: center;
+    width: 100%;
+}
+
+.home_screen_action_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    width: 100%;
+}
+
+.home_screen_upper_content {
+    padding-top: 2.5em;
+}
+
+.home_screen_footer {
+    padding-bottom: 1em;
+    color: rgba(128, 128, 128, .5);
+    text-align: center;
+}
