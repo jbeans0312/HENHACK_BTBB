@@ -12,7 +12,7 @@ import { DndProvider } from 'react-dnd';
 type ScreenDisplay = {
   home: boolean;
   game: boolean;
-};
+} & Record<string, boolean>;
 
 function App(): JSX.Element {
   /**
@@ -23,6 +23,21 @@ function App(): JSX.Element {
     home: true,
     game: true,
   });
+
+  const changeDisplay = React.useCallback(
+    (key: keyof ScreenDisplay) => {
+      const newDisplayScreen: ScreenDisplay = { ...displayScreen };
+      Object.keys(newDisplayScreen).forEach((eachDisplayKey: string) => {
+        if (eachDisplayKey === key) {
+          newDisplayScreen[eachDisplayKey] = true;
+        } else {
+          newDisplayScreen[eachDisplayKey] = false;
+        }
+      });
+      setDisplayScreen(newDisplayScreen);
+    },
+    [displayScreen]
+  );
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -45,7 +60,17 @@ function App(): JSX.Element {
           crossOrigin="anonymous"
         />
       </head>
+<<<<<<< HEAD
       {displayScreen.home ? <WarmupScreen /> : null}
+=======
+      {displayScreen.home ? (
+        <HomeScreen
+          toggleShowGame={() => {
+            changeDisplay("game");
+          }}
+        />
+      ) : null}
+>>>>>>> 81edd4eaaeaf98d0ffcacc4d1b846639897aa35c
     </>
     </DndProvider>
   );
