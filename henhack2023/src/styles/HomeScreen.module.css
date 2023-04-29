@@ -59,6 +59,12 @@
     max-width: fit-content;
 }
 
+.home_screen_image {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
 .home_screen_instructions_header {
     border: none !important;
     font-size: 1.3em;

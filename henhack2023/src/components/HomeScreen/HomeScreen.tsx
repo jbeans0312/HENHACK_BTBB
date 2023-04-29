@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../../icon.png";
 import { Button, Modal } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "src/styles/HomeScreen.module.css";
@@ -21,6 +22,20 @@ export const HomeScreen = ({
     <>
       <div className={styles.home_screen}>
         <div className={styles.home_screen_upper_content}>
+          <div className={styles.home_screen_image}>
+            {" "}
+            <img
+              style={{ width: 100, height: 100 }}
+              src={logo}
+              alt="Game Logo"
+            ></img>
+            <img
+              style={{ width: 100, height: 100 }}
+              src={logo}
+              alt="Game Logo"
+            ></img>
+          </div>
+
           <div className={styles.home_screen_title}>
             {"Splitting Suspects: A Recursive Bank Heist Mystery"}
           </div>
