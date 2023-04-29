@@ -5,7 +5,7 @@ import { Button, Modal } from "react-bootstrap";
 import styles from "src/styles/HomeScreen.module.css";
 
 type HomeScreenProperties = {
-  toggleShowGame: () => void;
+  toggleShowGame: (key: string) => void;
 };
 
 export const HomeScreen = ({
@@ -52,7 +52,14 @@ export const HomeScreen = ({
               >
                 {"Instructions"}
               </Button>
-              <Button variant="outline-success">{"Start Investigation"}</Button>
+              <Button
+                variant="outline-success"
+                onClick={() => {
+                  toggleShowGame("warmup");
+                }}
+              >
+                {"Start Investigation"}
+              </Button>
             </div>
           </div>
         </div>
