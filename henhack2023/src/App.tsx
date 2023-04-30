@@ -7,6 +7,7 @@ import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
 import { SuspectCard } from "./components/SuspectCard";
 import { SuspectContainer } from "./components/SuspectContainer";
 import { DragDropContext, type DropResult } from "react-beautiful-dnd";
+import { Layout } from "./components/Layout";
 
 /**
  *
@@ -70,7 +71,7 @@ function App(): JSX.Element {
   );
 
   return (
-    <>
+    <Layout>
       {displayScreen.home ? (
         <HomeScreen
           toggleShowGame={() => {
@@ -92,7 +93,7 @@ function App(): JSX.Element {
         </DragDropContext>
       ) : null}
       {displayScreen.game ? <div /> : null}
-    </>
+    </Layout>
   );
 }
 

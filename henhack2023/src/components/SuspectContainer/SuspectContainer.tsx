@@ -5,6 +5,7 @@ import {
   type DroppableStateSnapshot,
 } from "react-beautiful-dnd";
 import { DNDType, DNDTypes } from "src/constants/DNDTypes";
+import styles from "src/styles/SuspectContainer.module.css";
 
 type SuspectContainerProperties = {
   children: ReactNode;
@@ -16,20 +17,25 @@ export const SuspectContainer = ({
   return (
     <>
       <Droppable
+        direction="horizontal"
         droppableId={"droppable_suspect_container"}
         isDropDisabled={false}
         type={DNDTypes(DNDType.Suspect)}
       >
         {(provided: DroppableProvided, snapshot: DroppableStateSnapshot) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.droppableProps}
-            style={{
-              backgroundColor: snapshot.isDraggingOver ? "blue" : "gray",
-            }}
-          >
-            {children}
-          </div>
+          <>
+            <div
+              className={styles.container}
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              style={{
+                backgroundColor: snapshot.isDraggingOver ? "blue" : "gray",
+              }}
+            >
+              {children}
+              {provided.placeholder}
+            </div>
+          </>
         )}
       </Droppable>
     </>
