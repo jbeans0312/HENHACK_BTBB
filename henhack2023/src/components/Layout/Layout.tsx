@@ -7,13 +7,5 @@ type LayoutProperties = {
 };
 
 export const Layout = ({ children }: LayoutProperties): JSX.Element => (
-  <div
-    className={styles.layout_container}
-    style={{
-      backgroundImage: `url(${blubackground})`,
-      backgroundSize: "contain",
-    }}
-  >
-    {children}
-  </div>
+  <div className={styles.layout_container}>{children}</div>
 );

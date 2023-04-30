@@ -1,8 +1,23 @@
-.container {
+.suspect_container {
   background-color: black;
   width: fit-content;
   align-self: center;
   display: flex;
   flex-direction: row;
   gap: 0.5em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banks {
+  padding: 1em;
+}
+
+#bank {
+  width: 100%;
+  height: 100%;
 }

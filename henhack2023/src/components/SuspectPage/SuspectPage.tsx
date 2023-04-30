@@ -15,18 +15,6 @@ export const SuspectPage = ({
   return (
     <div className={styles.page}>
       <div className={styles.title}>{"Suspects"}</div>
-      <div className={styles.banks}>
-        {new Array(depositBanks).fill(0).map(
-          (eachDepositBank: number): JSX.Element => (
-            <div
-              className={styles.bank}
-              key={`deposit_bank_elem_${eachDepositBank}`}
-            >
-              <DepositBank ind={eachDepositBank} />
-            </div>
-          )
-        )}
-      </div>
       {children}
     </div>
   );

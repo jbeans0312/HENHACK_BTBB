@@ -9,6 +9,7 @@ import { SuspectContainer } from "./components/SuspectContainer";
 import { DragDropContext, type DropResult } from "react-beautiful-dnd";
 import { Layout } from "./components/Layout";
 import { SuspectPage } from "./components/SuspectPage";
+import { SuspectProvider } from "./provider";
 
 /**
  *
@@ -32,8 +33,6 @@ function App(): JSX.Element {
     warmup: false,
   });
 
-  const [suspects, setSuspects] = React.useState<string[]>(IMAGES);
-
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const changeDisplay = React.useCallback(
     (key: keyof ScreenDisplay) => {
@@ -50,53 +49,20 @@ function App(): JSX.Element {
     [displayScreen]
   );
 
-  const onDragEnd = React.useCallback(
-    (result: DropResult) => {
-      const { destination, source } = result;
-
-      console.log(destination, source);
-      if (
-        destination?.droppableId === source.droppableId &&
-        source.droppableId === "droppable_suspect_container"
-      ) {
-        const oldSuspects = [...suspects];
-        oldSuspects.splice(
-          destination.index,
-          0,
-          oldSuspects.splice(source.index, 1)[0]
-        );
-        setSuspects(oldSuspects);
-      }
-    },
-    [suspects]
-  );
-
   return (
-    <Layout>
-      {displayScreen.home ? (
-        <HomeScreen
-          toggleShowGame={() => {
-            changeDisplay("warmup");
-          }}
-        />
-      ) : null}
-      {displayScreen.warmup ? (
-        <SuspectPage>
-          <DragDropContext onDragEnd={onDragEnd}>
-            <SuspectContainer>
-              {suspects.map((eachSuspectName: string, index: number) => (
-                <SuspectCard
-                  key={`suspect_${index}_${eachSuspectName}`}
-                  id={eachSuspectName}
-                  index={index}
-                />
-              ))}
-            </SuspectContainer>
-          </DragDropContext>
-        </SuspectPage>
-      ) : null}
-      {displayScreen.game ? <div /> : null}
-    </Layout>
+    <SuspectProvider suspectNames={IMAGES}>
+      <Layout>
+        {displayScreen.home ? (
+          <HomeScreen
+            toggleShowGame={() => {
+              changeDisplay("warmup");
+            }}
+          />
+        ) : null}
+        {displayScreen.warmup ? <SuspectContainer depositBanks={1} /> : null}
+        {displayScreen.game ? <div /> : null}
+      </Layout>
+    </SuspectProvider>
   );
 }
 
