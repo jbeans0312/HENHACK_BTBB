@@ -1,0 +1,13 @@
+.bank {
+  border: 1px solid white;
+  border-radius: 1em;
+  padding: 1em;
+  width: fit-content;
+  min-width: 5vw;
+  height: 5vw;
+}
+
+.bank_title {
+  width: fit-content;
+  color: white;
+}

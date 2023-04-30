@@ -29,7 +29,9 @@ export const SuspectContainer = ({
               ref={provided.innerRef}
               {...provided.droppableProps}
               style={{
-                backgroundColor: snapshot.isDraggingOver ? "blue" : "gray",
+                backgroundColor: snapshot.isDraggingOver
+                  ? "rgba(128, 128, 128, 0.25)"
+                  : "black",
               }}
             >
               {children}

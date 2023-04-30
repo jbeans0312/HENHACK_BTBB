@@ -14,3 +14,15 @@
   text-align: center;
   color: white;
 }
+
+.banks {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.bank {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
