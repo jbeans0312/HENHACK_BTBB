@@ -3,12 +3,17 @@ import logo from "../../icon.png";
 import { Button, Modal, Image } from "react-bootstrap";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from "src/styles/HomeScreen.module.css";
-import type { ScreenDisplay } from "src/App";
 
 type HomeScreenProperties = {
-  toggleShowGame: (key: keyof ScreenDisplay) => void;
+  toggleShowGame: () => void;
 };
 
+/**
+ *
+ * @param props - The properties of the home screen (title screen)
+ * @param props.toggleShowGame - Controls whether to show the game
+ * @returns
+ */
 export const HomeScreen = ({
   toggleShowGame,
 }: HomeScreenProperties): JSX.Element => {
@@ -58,7 +63,7 @@ export const HomeScreen = ({
               <Button
                 variant="outline-success"
                 onClick={() => {
-                  toggleShowGame("warmup");
+                  toggleShowGame();
                 }}
               >
                 {"Start Investigation"}
