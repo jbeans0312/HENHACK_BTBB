@@ -1,1 +1,0 @@
-export { Suspect } from "./Suspect";

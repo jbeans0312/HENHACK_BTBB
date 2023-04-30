@@ -1,0 +1,16 @@
+.suspect_card {
+  background-color: #624f82;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 3px;
+  border-color: #9f73ab;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.suspect_img {
+  width: 5vw;
+  height: 5vw;
+}
