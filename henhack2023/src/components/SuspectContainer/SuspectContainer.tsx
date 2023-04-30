@@ -14,6 +14,8 @@ import { SuspectCard } from "../SuspectCard";
 import { DepositBank } from "../DepositBank/DepositBank";
 import { BankContainer } from "../DepositBank/BankContainer";
 import FadeIn from "react-fade-in";
+import useSound from "use-sound";
+import type { Suspect } from "src/@types/Suspect/Suspect";
 
 type SuspectContainerProperties = {
   depositBanks: number;
@@ -24,8 +26,11 @@ export const SuspectContainer = ({
 }: SuspectContainerProperties): JSX.Element => {
   const { addSuspect, suspects, placeSuspect, removeSuspect } =
     useSuspectContext();
-  const [banks, setBanks] = React.useState<string[][]>(
-    new Array(depositBanks).fill(new Array(depositBanks).fill(""))
+  const [banks, setBanks] = React.useState<Suspect[][]>(
+    new Array(depositBanks).fill(new Array(depositBanks).fill(undefined))
+  );
+  const [playPlaceInBank] = useSound(
+    `${process.env.PUBLIC_URL}/placeinbank.mp3`
   );
 
   const onDragEnd = React.useCallback(
@@ -45,8 +50,8 @@ export const SuspectContainer = ({
       ) {
         const bankIndex = +destination!.droppableId.split("_").slice(-1)[0];
         const removedSuspect = removeSuspect(source.index);
-        setBanks((allBanks: string[][]) => {
-          return allBanks.map((eachBank: string[], eachBankIndex: number) => {
+        setBanks((allBanks: Suspect[][]) => {
+          return allBanks.map((eachBank: Suspect[], eachBankIndex: number) => {
             if (eachBankIndex === bankIndex) {
               // found bank
               return [...eachBank, removedSuspect];
@@ -54,6 +59,7 @@ export const SuspectContainer = ({
             return eachBank;
           });
         });
+        playPlaceInBank();
       } else if (
         Boolean(destination) &&
         destination!.droppableId === "droppable_suspect_container" &&
@@ -62,8 +68,8 @@ export const SuspectContainer = ({
         const bankIndex = +source.droppableId.split("_").slice(-1)[0];
         const foundSuspect = banks[bankIndex][source.index];
         addSuspect(destination!.index, foundSuspect);
-        setBanks((allBanks: string[][]) => {
-          return allBanks.map((eachBank: string[], eachBankIndex: number) => {
+        setBanks((allBanks: Suspect[][]) => {
+          return allBanks.map((eachBank: Suspect[], eachBankIndex: number) => {
             if (eachBankIndex === bankIndex) {
               eachBank.splice(source.index, 1);
               return eachBank;
@@ -73,7 +79,7 @@ export const SuspectContainer = ({
         });
       }
     },
-    [addSuspect, banks, placeSuspect, removeSuspect]
+    [addSuspect, banks, placeSuspect, removeSuspect, playPlaceInBank]
   );
 
   return (
@@ -117,10 +123,10 @@ export const SuspectContainer = ({
                       : "black",
                   }}
                 >
-                  {suspects.map((eachSuspectName: string, index: number) => (
+                  {suspects.map((eachSuspectName: Suspect, index: number) => (
                     <SuspectCard
-                      key={`suspect_${index}_${eachSuspectName}`}
-                      id={eachSuspectName}
+                      key={`suspect_${index}_${eachSuspectName.name}`}
+                      id={eachSuspectName.name}
                       index={index}
                     />
                   ))}

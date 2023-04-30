@@ -12,9 +12,10 @@ import { useSuspectContext } from "src/hooks/useSuspectContext";
 
 import styles from "src/styles/DepositBank.module.css";
 import { SuspectCard } from "../SuspectCard";
+import type { Suspect } from "src/@types/Suspect/Suspect";
 
 type DepositBankProperties = {
-  bank: string[];
+  bank: Suspect[];
   ind: number;
 };
 
@@ -39,12 +40,13 @@ export function DepositBank({ bank, ind }: DepositBankProperties): JSX.Element {
             }}
           >
             {bank
-              .filter((e) => e.length > 0)
-              .map((eachSuspect: string, eachSuspectIndex: number) => (
+              .filter((e) => Boolean(e))
+              .map((eachSuspect: Suspect, eachSuspectIndex: number) => (
                 <SuspectCard
-                  id={eachSuspect}
-                  key={`bank_suspect_key_${eachSuspect}`}
+                  id={eachSuspect.name}
+                  key={`bank_suspect_key_${eachSuspect.name}`}
                   index={eachSuspectIndex}
+                  flipped={eachSuspect.flipped}
                 />
               ))}
             {provided.placeholder}

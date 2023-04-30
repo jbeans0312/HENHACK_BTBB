@@ -1,8 +1,9 @@
 import React from "react";
 import { DepositBank } from "../DepositBank";
+import type { Suspect } from "src/@types/Suspect/Suspect";
 
 type BankContainerProperties = {
-  banks: string[][];
+  banks: Suspect[][];
   numBanks: number;
 };
 

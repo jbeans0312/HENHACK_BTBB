@@ -10,6 +10,7 @@ import { DragDropContext, type DropResult } from "react-beautiful-dnd";
 import { Layout } from "./components/Layout";
 import { SuspectPage } from "./components/SuspectPage";
 import { SuspectProvider } from "./provider";
+import Sound from "react-sound";
 
 /**
  *
@@ -50,19 +51,21 @@ function App(): JSX.Element {
   );
 
   return (
-    <SuspectProvider suspectNames={IMAGES}>
-      <Layout>
-        {displayScreen.home ? (
-          <HomeScreen
-            toggleShowGame={() => {
-              changeDisplay("warmup");
-            }}
-          />
-        ) : null}
-        {displayScreen.warmup ? <SuspectContainer depositBanks={1} /> : null}
-        {displayScreen.game ? <div /> : null}
-      </Layout>
-    </SuspectProvider>
+    <>
+      <SuspectProvider suspectNames={IMAGES}>
+        <Layout>
+          {displayScreen.home ? (
+            <HomeScreen
+              toggleShowGame={() => {
+                changeDisplay("warmup");
+              }}
+            />
+          ) : null}
+          {displayScreen.warmup ? <SuspectContainer depositBanks={1} /> : null}
+          {displayScreen.game ? <div /> : null}
+        </Layout>
+      </SuspectProvider>
+    </>
   );
 }
 
