@@ -4,10 +4,11 @@ import "./App.css";
 import { HomeScreen } from "./components";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
-import { SuspectCard } from "./components/SuspectCard";
+import { SuspectCard } from "./components/SuspectCard/SuspectCard";
 import { SuspectContainer } from "./components/SuspectContainer";
 import { DragDropContext, type DropResult } from "react-beautiful-dnd";
 import { Layout } from "./components/Layout";
+import { SuspectPage } from "./components/SuspectPage";
 
 /**
  *
@@ -80,17 +81,19 @@ function App(): JSX.Element {
         />
       ) : null}
       {displayScreen.warmup ? (
-        <DragDropContext onDragEnd={onDragEnd}>
-          <SuspectContainer>
-            {suspects.map((eachSuspectName: string, index: number) => (
-              <SuspectCard
-                key={`suspect_${index}_${eachSuspectName}`}
-                id={eachSuspectName}
-                index={index}
-              />
-            ))}
-          </SuspectContainer>
-        </DragDropContext>
+        <SuspectPage>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <SuspectContainer>
+              {suspects.map((eachSuspectName: string, index: number) => (
+                <SuspectCard
+                  key={`suspect_${index}_${eachSuspectName}`}
+                  id={eachSuspectName}
+                  index={index}
+                />
+              ))}
+            </SuspectContainer>
+          </DragDropContext>
+        </SuspectPage>
       ) : null}
       {displayScreen.game ? <div /> : null}
     </Layout>

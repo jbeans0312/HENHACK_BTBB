@@ -1,0 +1,16 @@
+.page {
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
+  background-color: black;
+}
+
+.title {
+  font-size: 1.5em;
+  font-weight: 800;
+  text-align: center;
+  color: white;
+}
