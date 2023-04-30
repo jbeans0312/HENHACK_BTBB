@@ -6,7 +6,7 @@ import { HomeScreen } from "./components";
 import { WarmupScreen } from "./components/WarmupScreen/WarmupScreen";
 import { SuspectCard } from "./components/SuspectCard";
 import { SuspectContainer } from "./components/SuspectContainer";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext, type DropResult } from "react-beautiful-dnd";
 
 /**
  *
@@ -30,6 +30,8 @@ function App(): JSX.Element {
     warmup: false,
   });
 
+  const [suspects, setSuspects] = React.useState<string[]>(IMAGES);
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const changeDisplay = React.useCallback(
     (key: keyof ScreenDisplay) => {
@@ -46,21 +48,26 @@ function App(): JSX.Element {
     [displayScreen]
   );
 
-  const onBeforeCapture = React.useCallback(() => {
-    console.log("before capture");
-  }, []);
-  const onBeforeDragStart = React.useCallback(() => {
-    console.log("before drag start");
-  }, []);
-  const onDragStart = React.useCallback(() => {
-    console.log("drag start");
-  }, []);
-  const onDragUpdate = React.useCallback(() => {
-    console.log("drag update");
-  }, []);
-  const onDragEnd = React.useCallback(() => {
-    console.log("drag end");
-  }, []);
+  const onDragEnd = React.useCallback(
+    (result: DropResult) => {
+      const { destination, source } = result;
+
+      console.log(destination, source);
+      if (
+        destination?.droppableId === source.droppableId &&
+        source.droppableId === "droppable_suspect_container"
+      ) {
+        const oldSuspects = [...suspects];
+        oldSuspects.splice(
+          destination.index,
+          0,
+          oldSuspects.splice(source.index, 1)[0]
+        );
+        setSuspects(oldSuspects);
+      }
+    },
+    [suspects]
+  );
 
   return (
     <>
@@ -72,15 +79,9 @@ function App(): JSX.Element {
         />
       ) : null}
       {displayScreen.warmup ? (
-        <DragDropContext
-          onBeforeCapture={onBeforeCapture}
-          onBeforeDragStart={onBeforeDragStart}
-          onDragStart={onDragStart}
-          onDragUpdate={onDragUpdate}
-          onDragEnd={onDragEnd}
-        >
+        <DragDropContext onDragEnd={onDragEnd}>
           <SuspectContainer>
-            {IMAGES.map((eachSuspectName: string, index: number) => (
+            {suspects.map((eachSuspectName: string, index: number) => (
               <SuspectCard
                 key={`suspect_${index}_${eachSuspectName}`}
                 id={eachSuspectName}
