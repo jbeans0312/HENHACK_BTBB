@@ -80,12 +80,12 @@ export const SuspectContainer = ({
     <DragDropContext onDragEnd={onDragEnd}>
       <div className={styles.container}>
         <div className={styles.title}>
-          <FadeIn className={styles.title_text}>
+          <FadeIn className={styles.title_text} delay={1900}>
             <div>{"First job"}</div>
           </FadeIn>
           <FadeIn
             className={styles.title_text}
-            delay={400}
+            delay={2500}
             transitionDuration={700}
           >
             <div className={styles.title_text}>

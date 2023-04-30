@@ -16,3 +16,17 @@
   height: 5vw;
   border-radius: 1em;
 }
+
+.suspect_img_question {
+  width: 5vw;
+  height: 5vw;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.suspect_img_question > i {
+  align-self: center;
+  color: black;
+}
