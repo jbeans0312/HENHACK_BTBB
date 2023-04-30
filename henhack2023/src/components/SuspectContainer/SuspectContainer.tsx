@@ -41,7 +41,6 @@ export const SuspectContainer = ({
     (result: DropResult) => {
       const { destination, source } = result;
 
-      console.log(destination, source);
       if (
         destination?.droppableId === source.droppableId &&
         source.droppableId === "droppable_suspect_container"
