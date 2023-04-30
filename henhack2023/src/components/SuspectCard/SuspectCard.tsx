@@ -3,8 +3,10 @@ import styles from "src/styles/SuspectCard.module.css";
 import { Image } from "react-bootstrap";
 import {
   Draggable,
+  type DraggingStyle,
   type DraggableProvided,
   type DraggableStateSnapshot,
+  type NotDraggingStyle,
 } from "react-beautiful-dnd";
 import ReactCardFlip from "react-card-flip";
 import useSound from "use-sound";

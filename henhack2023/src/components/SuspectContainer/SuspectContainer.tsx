@@ -33,6 +33,10 @@ export const SuspectContainer = ({
     `${process.env.PUBLIC_URL}/placeinbank.mp3`
   );
 
+  React.useEffect(() => {
+    console.log(banks);
+  }, [banks]);
+
   const onDragEnd = React.useCallback(
     (result: DropResult) => {
       const { destination, source } = result;
@@ -54,9 +58,11 @@ export const SuspectContainer = ({
           return allBanks.map((eachBank: Suspect[], eachBankIndex: number) => {
             if (eachBankIndex === bankIndex) {
               // found bank
-              return [...eachBank, removedSuspect];
+              return [...eachBank, { ...removedSuspect }].filter(
+                (e) => e !== undefined
+              );
             }
-            return eachBank;
+            return [...eachBank];
           });
         });
         playPlaceInBank();
@@ -65,17 +71,20 @@ export const SuspectContainer = ({
         destination!.droppableId === "droppable_suspect_container" &&
         source.droppableId.includes("deposit_bank")
       ) {
+        console.log(banks);
         const bankIndex = +source.droppableId.split("_").slice(-1)[0];
-        const foundSuspect = banks[bankIndex][source.index];
+        const foundSuspect = { ...banks[bankIndex][source.index] };
         addSuspect(destination!.index, foundSuspect);
         setBanks((allBanks: Suspect[][]) => {
-          return allBanks.map((eachBank: Suspect[], eachBankIndex: number) => {
-            if (eachBankIndex === bankIndex) {
-              eachBank.splice(source.index, 1);
+          return [...allBanks]
+            .map((e) => ({ ...e }))
+            .map((eachBank: Suspect[], eachBankIndex: number) => {
+              if (eachBankIndex === bankIndex) {
+                eachBank.splice(source.index, 1);
+                return eachBank;
+              }
               return eachBank;
-            }
-            return eachBank;
-          });
+            });
         });
       }
     },

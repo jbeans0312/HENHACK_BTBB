@@ -31,7 +31,7 @@ export const SuspectProvider = ({
     > => ({
       addSuspect: (to: number, suspect: Suspect) => {
         setSuspects((oldSuspects: Suspect[]) => {
-          oldSuspects.splice(to, 0, suspect);
+          oldSuspects.splice(to, 0, { ...suspect });
           return oldSuspects;
         });
       },
