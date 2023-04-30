@@ -13,6 +13,7 @@ import styles from "src/styles/SuspectContainer.module.css";
 import { SuspectCard } from "../SuspectCard";
 import { DepositBank } from "../DepositBank/DepositBank";
 import { BankContainer } from "../DepositBank/BankContainer";
+import FadeIn from "react-fade-in";
 
 type SuspectContainerProperties = {
   depositBanks: number;
@@ -78,39 +79,57 @@ export const SuspectContainer = ({
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className={styles.container}>
-        <div className={styles.title}>{"Suspects"}</div>
-        <div className={styles.banks}>
-          <BankContainer banks={banks} numBanks={depositBanks} />
+        <div className={styles.title}>
+          <FadeIn className={styles.title_text}>
+            <div>{"First job"}</div>
+          </FadeIn>
+          <FadeIn
+            className={styles.title_text}
+            delay={400}
+            transitionDuration={700}
+          >
+            <div className={styles.title_text}>
+              {"Choose 3 suspects from the list to eliminate"}
+            </div>
+          </FadeIn>
         </div>
-        <Droppable
-          direction="horizontal"
-          droppableId={"droppable_suspect_container"}
-          type={DNDTypes(DNDType.Suspect)}
-        >
-          {(provided: DroppableProvided, snapshot: DroppableStateSnapshot) => (
-            <>
-              <div
-                className={styles.suspect_container}
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                style={{
-                  backgroundColor: snapshot.isDraggingOver
-                    ? "rgba(128, 128, 128, 0.25)"
-                    : "black",
-                }}
-              >
-                {suspects.map((eachSuspectName: string, index: number) => (
-                  <SuspectCard
-                    key={`suspect_${index}_${eachSuspectName}`}
-                    id={eachSuspectName}
-                    index={index}
-                  />
-                ))}
-                {provided.placeholder}
-              </div>
-            </>
-          )}
-        </Droppable>
+        <div className={styles.bank_list_container}>
+          <div className={styles.banks}>
+            <BankContainer banks={banks} numBanks={depositBanks} />
+          </div>
+          <Droppable
+            direction="horizontal"
+            droppableId={"droppable_suspect_container"}
+            type={DNDTypes(DNDType.Suspect)}
+          >
+            {(
+              provided: DroppableProvided,
+              snapshot: DroppableStateSnapshot
+            ) => (
+              <>
+                <div
+                  className={styles.suspect_container}
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  style={{
+                    backgroundColor: snapshot.isDraggingOver
+                      ? "rgba(128, 128, 128, 0.25)"
+                      : "black",
+                  }}
+                >
+                  {suspects.map((eachSuspectName: string, index: number) => (
+                    <SuspectCard
+                      key={`suspect_${index}_${eachSuspectName}`}
+                      id={eachSuspectName}
+                      index={index}
+                    />
+                  ))}
+                  {provided.placeholder}
+                </div>
+              </>
+            )}
+          </Droppable>
+        </div>
       </div>
     </DragDropContext>
   );
