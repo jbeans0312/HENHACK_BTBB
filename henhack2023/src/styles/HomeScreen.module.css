@@ -140,3 +140,7 @@
     height: 6.5vw;
   }
 }
+
+.home_screen_button {
+  min-width: 10vw;
+}
